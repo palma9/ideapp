@@ -43,3 +43,21 @@ class updateIdeaVisibility(graphene.Mutation):
         idea.save()
 
         return updateIdeaVisibility(idea=idea)        
+
+class deleteIdea(graphene.Mutation):
+    class Arguments:
+        id = graphene.ID(required=True)
+
+    success = graphene.Boolean()
+
+    @login_required
+    def mutate(self, info, id):
+        user = info.context.user
+        try:
+            idea = Idea.objects.get(id=id, user__id=user.id)
+            idea.delete()
+            success = True
+        except Idea.DoesNotExist:
+            success = False
+
+        return deleteIdea(success=success)
