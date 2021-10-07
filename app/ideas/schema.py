@@ -1,7 +1,7 @@
 import graphene
 from graphql_jwt.decorators import login_required
 
-from ideas.mutations import createIdea
+from ideas.mutations import createIdea, updateIdeaVisibility
 from ideas.types import IdeaType
 from ideas.models import Idea
 
@@ -16,5 +16,6 @@ class Query(graphene.ObjectType):
 
 class Mutation(graphene.ObjectType):
     create_idea = createIdea.Field()
+    update_idea_visibility = updateIdeaVisibility.Field()
 
 schema = graphene.Schema(query=Query, mutation=Mutation)
