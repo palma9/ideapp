@@ -1,4 +1,5 @@
 import graphene
+from graphql_jwt.decorators import login_required
 
 from ideas.inputs import IdeaInput
 from ideas.models import Idea
@@ -12,6 +13,7 @@ class createIdea(graphene.Mutation):
     
     idea = graphene.Field(IdeaType)
     
+    @login_required
     def mutate(self, info, input):
         user = info.context.user
 
