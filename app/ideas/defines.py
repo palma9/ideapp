@@ -1,9 +1,0 @@
-PUBLIC = 'public'
-PROTECTED = 'protected'
-PRIVATE = 'private'
-
-VISIBILITY_CHOICES = (
-    (PUBLIC, PUBLIC),
-    (PROTECTED, PROTECTED),
-    (PRIVATE, PRIVATE)
-)

@@ -1,8 +1,12 @@
 from django.db import models
-from ideas.defines import VISIBILITY_CHOICES
-
 
 class Idea(models.Model):
+
+    class VisibilityChoices(models.TextChoices):
+        public = 'public'
+        protected = 'protected'
+        private = 'private'
+
     content = models.CharField(
         verbose_name="content",
         max_length=280
@@ -20,6 +24,7 @@ class Idea(models.Model):
 
     visibility = models.CharField(
         verbose_name="visibility",
-        choices=VISIBILITY_CHOICES,
+        choices=VisibilityChoices.choices,
+        default=VisibilityChoices.public,
         max_length=9
     )
