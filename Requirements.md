@@ -7,7 +7,7 @@
 - ~~Un usuario puede publicar una idea como un texto corto en cualquier momento.~~
 - Un usuario puede establecer la visibilidad de una idea: publica (todos pueden verla), protegida (solo otros usuarios que siguen al usuario de la idea pueden verla) y privada (solo el usuario que creó la idea puede verla)
 - Un usuario puede establecer la visibilidad de una idea en el momento de su creacion o editarla posteriormente.
-- Un usuario puede consultar todas las ideas que ha publicado ordenadas de mas recientes a mas antiguas.
+- ~~Un usuario puede consultar todas las ideas que ha publicado ordenadas de mas recientes a mas antiguas.~~
 - Un usuario puede borrar una idea publicada.
 - Un usuario puede solicitar seguir a otro usuario
 - Un usuario puede ver el listado de solicitudes de seguimiento recibidas y aprovarlas o denegarlas
