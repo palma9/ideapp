@@ -13,8 +13,8 @@
 - ~~Un usuario puede ver el listado de solicitudes de seguimiento recibidas y aprovarlas o denegarlas~~
 - ~~Un usuario puede ver el listado de gente a la que sigue~~
 - ~~Un usuario puede ver el listado de gente que le sigue~~
-- Un usuario puede dejar de seguir a alguien
-- Un usuario puede eliminar a otro usuario de su lista de seguidores
+- ~~Un usuario puede dejar de seguir a alguien~~
+- ~~Un usuario puede eliminar a otro usuario de su lista de seguidores~~
 - Un usuario puede realizar una busqueda de otros usuarios introduciendo un nombre de usuario o parte de uno
 - Un usuario puede ver la lista de ideas de cualquier otro usuario, teniendo en cuenta la visibilidad de cada idea.
 - Un usuario puede ver un timeline de ideas compuesto por sus propias ideas y las ideas de los usuarios a los que sigue, teniendo en cuenta la visibilidad de cada idea.

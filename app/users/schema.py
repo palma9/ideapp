@@ -3,7 +3,7 @@ from graphql_auth import mutations as AuthMutations
 from graphql_jwt.decorators import login_required
 
 from users.models import FollowRequest
-from users.mutations import AcceptFollower, DenyFollower, Follow, Unfollow
+from users.mutations import AcceptFollower, DenyFollower, Follow, Unfollow, removeFollower
 from users.types import FollowerType, FollowingType
 
 
@@ -42,6 +42,6 @@ class Mutation(graphene.ObjectType):
     Accept_follower = AcceptFollower.Field()
     deny_follower = DenyFollower.Field()
     unfollow = Unfollow.Field()
-
+    remove_follower = removeFollower.Field()
 
 schema = graphene.Schema(query=Query, mutation=Mutation)
