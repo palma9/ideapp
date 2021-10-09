@@ -9,11 +9,17 @@ from users.types import FollowerType
 
 class Query(graphene.ObjectType):
     follow_requests = graphene.List(FollowerType)
-    
+    following = graphene.List(FollowerType)
+
     @login_required
     def resolve_follow_requests(self, info):
         user = info.context.user
         return FollowRequest.objects.filter(following=user.id, pending=True).order_by("-request_date")
+
+    @login_required
+    def resolve_following(self, info):
+        user = info.context.user
+        return FollowRequest.objects.filter(follower=user.id, pending=False)
 
 
 class Mutation(graphene.ObjectType):
