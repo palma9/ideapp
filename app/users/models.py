@@ -24,10 +24,10 @@ class CustomUser(AbstractUser):
 
 
 class FollowRequest(models.Model):
-    user_id = models.ForeignKey(CustomUser, related_name="following", on_delete=models.CASCADE)
-    target_user_id = models.ForeignKey(CustomUser, related_name="followers", on_delete=models.CASCADE)
+    follower = models.ForeignKey(CustomUser, related_name="following", on_delete=models.CASCADE)
+    following = models.ForeignKey(CustomUser, related_name="followers", on_delete=models.CASCADE)
     pending = models.BooleanField(default=True)
     request_date = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        unique_together = ('user_id', 'target_user_id',)
+        unique_together = ('follower', 'following',)
