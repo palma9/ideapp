@@ -2,7 +2,7 @@ import graphene
 from graphql_jwt.decorators import login_required
 
 from users.models import CustomUser, FollowRequest
-from users.types import FollowType
+from users.types import FollowerType, FollowingType
 
 
 class Follow(graphene.Mutation):
@@ -10,7 +10,7 @@ class Follow(graphene.Mutation):
     class Arguments:
         user_id = graphene.Int(required=True)
     
-    follow = graphene.Field(FollowType)
+    follow = graphene.Field(FollowingType)
     
     @login_required
     def mutate(self, info, user_id):
@@ -31,7 +31,7 @@ class AcceptFollower(graphene.Mutation):
     class Arguments:
         user_id = graphene.Int(required=True)
     
-    follower = graphene.Field(FollowType)
+    follower = graphene.Field(FollowerType)
 
     @login_required
     def mutate(self, info, user_id):

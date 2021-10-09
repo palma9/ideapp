@@ -4,11 +4,11 @@ from graphql_jwt.decorators import login_required
 
 from users.models import FollowRequest
 from users.mutations import AcceptFollower, DenyFollower, Follow
-from users.types import FollowType
+from users.types import FollowerType
 
 
 class Query(graphene.ObjectType):
-    follow_requests = graphene.List(FollowType)
+    follow_requests = graphene.List(FollowerType)
     
     @login_required
     def resolve_follow_requests(self, info):

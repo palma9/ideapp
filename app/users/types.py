@@ -8,6 +8,13 @@ class UserType(DjangoObjectType):
         fields = ('id', "email", "username")
 
 
-class FollowType(DjangoObjectType):
+class FollowerType(DjangoObjectType):
     class Meta:
         model = FollowRequest
+        fields = ('id', 'follower', 'pending', 'request_date')
+
+
+class FollowingType(DjangoObjectType):
+    class Meta:
+        model = FollowRequest
+        fields = ('id', 'following', 'pending', 'request_date')
