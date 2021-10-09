@@ -24,3 +24,21 @@ class Follow(graphene.Mutation):
         follow_request.save()
 
         return Follow(follow=follow_request)
+
+
+class AcceptFollower(graphene.Mutation):
+    """ The logged user can accept a received follow request """
+    class Arguments:
+        user_id = graphene.Int(required=True)
+    
+    follower = graphene.Field(FollowType)
+
+    @login_required
+    def mutate(self, info, user_id):
+        my_user = info.context.user
+
+        follower = FollowRequest.objects.get(follower_id=user_id, following_id=my_user.id, pending=True)
+        follower.pending = False
+        follower.save()
+
+        return AcceptFollower(follower=follower)
