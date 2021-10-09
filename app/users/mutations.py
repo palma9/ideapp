@@ -42,3 +42,23 @@ class AcceptFollower(graphene.Mutation):
         follower.save()
 
         return AcceptFollower(follower=follower)
+
+
+class DenyFollower(graphene.Mutation):
+    """ The logged user can deny a received follow request """
+    class Arguments:
+        user_id = graphene.Int(required=True)
+    
+    success = graphene.Boolean()
+
+    @login_required
+    def mutate(self, info, user_id):
+        my_user = info.context.user
+        try:
+            follower = FollowRequest.objects.get(follower_id=user_id, following_id=my_user.id, pending=True)
+            follower.delete()
+            success = True
+        except FollowRequest.DoesNotExist:
+            success = False
+
+        return AcceptFollower(success=success)

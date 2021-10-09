@@ -10,7 +10,7 @@
 - ~~Un usuario puede consultar todas las ideas que ha publicado ordenadas de mas recientes a mas antiguas.~~
 - ~~Un usuario puede borrar una idea publicada.~~
 - ~~Un usuario puede solicitar seguir a otro usuario~~
-- Un usuario puede ver el listado de solicitudes de seguimiento recibidas y aprovarlas o denegarlas
+- ~~Un usuario puede ver el listado de solicitudes de seguimiento recibidas y aprovarlas o denegarlas~~
 - Un usuario puede ver el listado de gente a la que sigue
 - Un usuario puede ver el listado de gente que le sigue
 - Un usuario puede dejar de seguir a alguien
