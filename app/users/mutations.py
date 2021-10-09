@@ -62,3 +62,23 @@ class DenyFollower(graphene.Mutation):
             success = False
 
         return AcceptFollower(success=success)
+
+
+class Unfollow(graphene.Mutation):
+    """ The logged user unfollow a following user """
+    class Arguments:
+        user_id = graphene.Int(required=True)
+
+    success = graphene.Boolean()
+
+    @login_required
+    def mutate(self, info, user_id):
+        my_user = info.context.user
+        try:
+            follow_request = FollowRequest.objects.get(follower_id=my_user.id, following_id=user_id, pending=False)
+            follow_request.delete()
+            success = True
+        except FollowRequest.DoesNotExist:
+            success = False
+        
+        return Unfollow(success=success)
