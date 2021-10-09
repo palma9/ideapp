@@ -1,11 +1,19 @@
 import graphene
 from graphql_auth import mutations as AuthMutations
+from graphql_jwt.decorators import login_required
 
+from users.models import FollowRequest
 from users.mutations import Follow
+from users.types import FollowType
 
 
 class Query(graphene.ObjectType):
-    pass
+    follow_requests = graphene.List(FollowType)
+    
+    @login_required
+    def resolve_follow_requests(self, info):
+        user = info.context.user
+        return FollowRequest.objects.filter(following=user.id, pending=True).order_by("-request_date")
 
 
 class Mutation(graphene.ObjectType):
@@ -21,4 +29,4 @@ class Mutation(graphene.ObjectType):
     follow = Follow.Field()
 
 
-schema = graphene.Schema(mutation=Mutation)
+schema = graphene.Schema(query=Query, mutation=Mutation)

@@ -9,7 +9,7 @@
 - ~~Un usuario puede establecer la visibilidad de una idea en el momento de su creacion o editarla posteriormente.~~
 - ~~Un usuario puede consultar todas las ideas que ha publicado ordenadas de mas recientes a mas antiguas.~~
 - ~~Un usuario puede borrar una idea publicada.~~
-- Un usuario puede solicitar seguir a otro usuario
+- ~~Un usuario puede solicitar seguir a otro usuario~~
 - Un usuario puede ver el listado de solicitudes de seguimiento recibidas y aprovarlas o denegarlas
 - Un usuario puede ver el listado de gente a la que sigue
 - Un usuario puede ver el listado de gente que le sigue

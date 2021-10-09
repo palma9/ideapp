@@ -3,7 +3,7 @@ from users.schema import schema as UserSchema
 from ideas.schema import schema as ideaSchema
 
 
-class Query(ideaSchema.Query, graphene.ObjectType):
+class Query(ideaSchema.Query, UserSchema.Query, graphene.ObjectType):
     pass
 
 
