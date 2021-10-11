@@ -16,8 +16,8 @@
 - ~~Un usuario puede dejar de seguir a alguien~~
 - ~~Un usuario puede eliminar a otro usuario de su lista de seguidores~~
 - ~~Un usuario puede realizar una busqueda de otros usuarios introduciendo un nombre de usuario o parte de uno~~
-- Un usuario puede ver la lista de ideas de cualquier otro usuario, teniendo en cuenta la visibilidad de cada idea.
-- Un usuario puede ver un timeline de ideas compuesto por sus propias ideas y las ideas de los usuarios a los que sigue, teniendo en cuenta la visibilidad de cada idea.
+- ~~Un usuario puede ver la lista de ideas de cualquier otro usuario, teniendo en cuenta la visibilidad de cada idea.~~
+- ~~Un usuario puede ver un timeline de ideas compuesto por sus propias ideas y las ideas de los usuarios a los que sigue, teniendo en cuenta la visibilidad de cada idea.~~
 - Un usuario debe recibir una notificación cada vez que un usuario al que sigue publica una idea nueva a la que tiene acceso.
 
 #### Consideraciones:
