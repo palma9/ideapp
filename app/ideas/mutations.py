@@ -1,10 +1,15 @@
 import graphene
 from graphql_jwt.decorators import login_required
+from asgiref.sync import async_to_sync
+from channels.layers import get_channel_layer
 
 from ideas.inputs import IdeaInput
 from ideas.models import Idea
 from ideas.types import IdeaType
 from users.models import CustomUser
+
+
+channel_layer = get_channel_layer()
 
 
 class createIdea(graphene.Mutation):
@@ -24,6 +29,8 @@ class createIdea(graphene.Mutation):
         )
 
         idea.save()
+
+        async_to_sync(channel_layer.group_send)("new_idea", {"data": idea})
 
         return createIdea(idea=idea)
 
