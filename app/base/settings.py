@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-y_ktnntp$4$u_4pzsvz%(kqh0^qk#u-194+##evd4&!k1x0u0o'
+SECRET_KEY = 'AMeogU#M73oz6o@B2Zpip9U*JSEkGR5rnDG4toYhQajn7FDcaapp#Ajw9@vDdMqw'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'channels',
+    'graphql_ws.django',
     'graphene_django',
     'graphql_jwt.refresh_token.apps.RefreshTokenConfig',
     'graphql_auth',
@@ -145,6 +147,9 @@ AUTHENTICATION_BACKENDS = [
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
+CHANNEL_LAYERS = {"default": {"BACKEND": "channels.layers.InMemoryChannelLayer"}}
+
+ASGI_APPLICATION = 'graphql_ws.django.routing.application'
 
 # Graphene Settings
 GRAPHENE = {

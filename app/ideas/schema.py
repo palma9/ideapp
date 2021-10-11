@@ -1,12 +1,19 @@
+from asgiref.sync import sync_to_async
 from django.db.models.query_utils import Q
 import graphene
 from graphql_jwt.decorators import login_required
+from graphql_jwt.shortcuts import get_user_by_token
 from users.models import CustomUser
-from users.types import UserType
+from channels.db import database_sync_to_async
 
 from ideas.mutations import createIdea, updateIdeaVisibility, deleteIdea
 from ideas.types import IdeaType
 from ideas.models import Idea
+
+from channels.layers import get_channel_layer
+
+channel_layer = get_channel_layer()
+
 
 class Query(graphene.ObjectType):
     my_ideas = graphene.List(IdeaType)
@@ -46,4 +53,25 @@ class Mutation(graphene.ObjectType):
     update_idea_visibility = updateIdeaVisibility.Field()
     delete_idea = deleteIdea.Field()
 
-schema = graphene.Schema(query=Query, mutation=Mutation)
+
+class Subscription(graphene.ObjectType):
+    notify_ideas = graphene.Field(IdeaType, token=graphene.String(required=True))
+    
+    async def resolve_notify_ideas(self, info, token):
+        token_user = await sync_to_async(get_user_by_token)(token, info.context)
+        private_ideas = Idea.VisibilityChoices.private.value
+        my_following_func = token_user.async_following
+
+        channel_name = await channel_layer.new_channel()
+        await channel_layer.group_add("new_idea", channel_name)
+
+        try:
+            while True:
+                idea = (await channel_layer.receive(channel_name))['data']
+                actual_following = await my_following_func()
+                if idea.user in actual_following and idea.visibility != private_ideas:
+                    yield idea
+        finally:
+            await channel_layer.group_discard("new_idea", channel_name)
+
+schema = graphene.Schema(query=Query, mutation=Mutation, subscription=Subscription)

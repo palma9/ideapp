@@ -11,4 +11,7 @@ class Mutation(ideaSchema.Mutation, UserSchema.Mutation, graphene.ObjectType):
     pass
 
 
-schema = graphene.Schema(query=Query, mutation=Mutation)
+class Subscription(ideaSchema.Subscription, graphene.ObjectType):
+    pass
+
+schema = graphene.Schema(query=Query, mutation=Mutation, subscription=Subscription)
