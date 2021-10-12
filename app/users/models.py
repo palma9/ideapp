@@ -35,6 +35,8 @@ class CustomUser(AbstractUser):
 
 
 class FollowRequest(models.Model):
+    """ Model to manage interactions between two users """
+
     follower = models.ForeignKey(CustomUser, related_name="following", on_delete=models.CASCADE)
     following = models.ForeignKey(CustomUser, related_name="followers", on_delete=models.CASCADE)
     pending = models.BooleanField(default=True)

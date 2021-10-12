@@ -13,6 +13,7 @@ channel_layer = get_channel_layer()
 
 
 class createIdea(graphene.Mutation):
+    """ The user create a new idea """
     class Arguments:
         input = IdeaInput(required=True)
     
@@ -30,12 +31,14 @@ class createIdea(graphene.Mutation):
 
         idea.save()
 
+        # Send to notifyIdea subscription
         async_to_sync(channel_layer.group_send)("new_idea", {"data": idea})
 
         return createIdea(idea=idea)
 
 
 class updateIdeaVisibility(graphene.Mutation):
+    """ Used to change the visibility of a created idea """
     class Arguments:
         id = graphene.ID(required=True)
         visibility = graphene.String(required=True)
@@ -52,6 +55,7 @@ class updateIdeaVisibility(graphene.Mutation):
         return updateIdeaVisibility(idea=idea)        
 
 class deleteIdea(graphene.Mutation):
+    """ The user delete their created ideas """
     class Arguments:
         id = graphene.ID(required=True)
 

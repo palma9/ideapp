@@ -4,13 +4,11 @@ import graphene
 from graphql_jwt.decorators import login_required
 from graphql_jwt.shortcuts import get_user_by_token
 from users.models import CustomUser
-from channels.db import database_sync_to_async
-
 from ideas.mutations import createIdea, updateIdeaVisibility, deleteIdea
 from ideas.types import IdeaType
 from ideas.models import Idea
-
 from channels.layers import get_channel_layer
+
 
 channel_layer = get_channel_layer()
 
@@ -58,6 +56,8 @@ class Subscription(graphene.ObjectType):
     notify_ideas = graphene.Field(IdeaType, token=graphene.String(required=True))
     
     async def resolve_notify_ideas(self, info, token):
+        """ Subscribe to mi followings and receive a notification when any of them create a new idea """
+        
         token_user = await sync_to_async(get_user_by_token)(token, info.context)
         private_ideas = Idea.VisibilityChoices.private.value
         my_following_func = token_user.async_following

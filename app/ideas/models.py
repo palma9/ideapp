@@ -1,8 +1,11 @@
 from django.db import models
 
 class Idea(models.Model):
+    """ Idea base model """
 
     class VisibilityChoices(models.TextChoices):
+        """ Visibility model to define the only choices visibility have """
+        
         public = 'public'
         protected = 'protected'
         private = 'private'
