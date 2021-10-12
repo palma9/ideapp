@@ -51,7 +51,7 @@ class Mutation(graphene.ObjectType):
     revoke_token = AuthMutations.RevokeToken.Field()
 
     follow = Follow.Field()
-    Accept_follower = AcceptFollower.Field()
+    accept_follower = AcceptFollower.Field()
     deny_follower = DenyFollower.Field()
     unfollow = Unfollow.Field()
     remove_follower = removeFollower.Field()
