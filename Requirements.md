@@ -18,7 +18,7 @@
 - ~~Un usuario puede realizar una busqueda de otros usuarios introduciendo un nombre de usuario o parte de uno~~
 - ~~Un usuario puede ver la lista de ideas de cualquier otro usuario, teniendo en cuenta la visibilidad de cada idea.~~
 - ~~Un usuario puede ver un timeline de ideas compuesto por sus propias ideas y las ideas de los usuarios a los que sigue, teniendo en cuenta la visibilidad de cada idea.~~
-- Un usuario debe recibir una notificación cada vez que un usuario al que sigue publica una idea nueva a la que tiene acceso.
+- ~~Un usuario debe recibir una notificación cada vez que un usuario al que sigue publica una idea nueva a la que tiene acceso.~~
 
 #### Consideraciones:
 
@@ -27,5 +27,5 @@
 - El proyecto debe incluir un README.md con instrucciones para levantar el entorno de desarrollo y todas las consideraciones que se crean oportunas.
 - El plazo para la realización de la prueba es una semana, no es necesario terminar la prueba al completo, será suficiente con enviar lo conseguido durante esa semana
 - Se valorarán buenas practicas en cuanto a organización y calidad de código
-- Se valorará la inclusion de tests
+- ~~Se valorará la inclusion de tests~~
 - El proyecto se entregará enlazando un repositorio git publico (github o gitlab)
