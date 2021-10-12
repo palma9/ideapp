@@ -1,5 +1,5 @@
 # ideapp
-### Ideapp is an app to save and share ideas built in Django with GraphQl and PostgreSQL.
+#### Ideapp is an app to save and share ideas built in Django with GraphQl and PostgreSQL.
 
 
 # Setup
